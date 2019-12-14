@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<title>Math</title>
+
+<script>
+    var number1 = Math.floor(Math.random() * 10);
+    var number2 = Math.floor(Math.random() * 10);
+    var numberRight = 0;
+    var numberAnswered = 0;
+    var OPEL = 10;
+    var i = 0;
+    function printQuestion() {
+        actualAnswer = number1 + number2;
+        document.getElementById("theQuestion").innerHTML = "What is " + number1 + "+" + number2 + "?";
+        document.getElementById("theQuestions").innerHTML = "<h1>Question " + (numberAnswered + 1) + "</h1>";
+    }
+    function checkAnswer() {
+        var answer = document.getElementById("txtAnswer").value;
+        if (answer == actualAnswer) {
+            document.getElementById("finalResult").innerHTML = "Good job!";
+            runGame();
+            numberRight += 1;
+            numberAnswered += 1;
+        }
+        else {
+            document.getElementById("finalResult").innerHTML = "Try Again!";
+            numberAnswered += 1;
+        }
+    }
+    numberAnswered += 1;
+
+
+    function runGame() {
+        for (var i = 0; i > 10; i++);
+        number1 = Math.floor(Math.random() * 10);
+        number2 = Math.floor(Math.random() * 10);
+        printQuestion();
+
+    }
+    if (i < 10) {
+        runGame();
+    }
+    else {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("finalResult").innerHTML = " Final Result: " + numberRight + " right answers " + (numberAnswered - numberRight) + " incorrect answers. <br> Grade: "(numberRight / numberAnswered) * 100 + " % "
+    }
+
+</script>
+
+<body onload="runGame();">
+    <div id="game"></div>
+    <div id="theQuestions"></div>
+    <div id="theQuestion"></div>
+    <table>
+        <tr>
+            <td>Your answer</td>
+            <td><input type="text" id="txtAnswer"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="btnSubmit" onClick="checkAnswer();">Submit</button></td>
+        </tr>
+    </table>
+    <div id="finalResult"></div>
+    <a href="Page1.html">Home</a> | <a href="page2.html">Story</a> | <a href="page3.html">Contact Us!</a> | <a href="page5.html">My Portfolio!</a>
+</body>
+
+</html>
